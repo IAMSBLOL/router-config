@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "antd": "^5.17.2",
+    "i18next": "^23.11.4",
+    "immer": "^10.1.1",
+    "jotai-immer": "^0.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.1"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
@@ -29,6 +33,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-unicorn": "^53.0.0",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "i18next-chained-backend": "^4.6.2",
+    "i18next-http-backend": "^2.5.1",
+    "i18next-resources-to-backend": "^1.2.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "ts-node": "^10.9.2",
