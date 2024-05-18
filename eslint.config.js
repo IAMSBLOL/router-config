@@ -55,6 +55,9 @@ export default [
         maximum: 1, // 可以根据需要调整这个值
         when: 'always' // 或者 "multiline"
       }],
+      'unicorn/no-null': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/consistent-function-scoping': 'off',
       'unicorn/filename-case': [
         'error',
         {

@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     screens: {
@@ -13,17 +13,19 @@ const config: Config = {
       xl: '1280px',
       '2xl': '1536px'
     },
+
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      }
+    }
 
   },
   plugins: [
-    require('@tailwindcss/container-queries'),
-  ],
+    // eslint-disable-next-line unicorn/prefer-module
+    require('@tailwindcss/container-queries')
+  ]
 }
 export default config

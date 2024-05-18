@@ -9,19 +9,21 @@ const NoFoundPage: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <Result
-      status="404"
-      title="404"
-      subTitle={t('notFound.subTitle')}
-      extra={
-        <Button
-          type="primary"
-          onClick={() => navigate('/')}>
-          {t('notFound.buttonText')}
-        </Button>
-      }
+    <div className='pt-14'>
+      <Result
+        status="404"
+        title="404"
+        subTitle={t('notFound.subTitle')}
+        extra={
+          <Button
+            type="primary"
+            onClick={() => navigate('/')}>
+            {t('notFound.buttonText')}
+          </Button>
+        }
 
-    />
+      />
+    </div>
   )
 }
 

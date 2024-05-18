@@ -13,7 +13,6 @@ function Redirect ({ to }:{to:string}) {
   useEffect(() => {
     navigate(to)
   }, [navigate, to])
-  // eslint-disable-next-line unicorn/no-null
   return null
 }
 

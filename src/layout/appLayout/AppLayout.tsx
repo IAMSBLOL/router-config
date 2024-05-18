@@ -1,11 +1,18 @@
 import { Outlet } from 'react-router-dom'
-import Header from './Header'
+import Header from './components/Header'
+import Memu from './components/Memu'
+import Content from './components/Content'
+import DrawerMenu from './components/DrawerMenu'
 
 const AppLayout = () => {
   return (
-    <div>
+    <div className='flex h-full font-sans'>
       <Header />
-      <Outlet/>
+      <Memu />
+      <Content>
+        <Outlet/>
+      </Content>
+      <DrawerMenu/>
     </div>
   )
 }

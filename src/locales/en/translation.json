@@ -1,6 +1,8 @@
 {
-  "welcome": "欢迎来到我的1231网站",
+  "welcome": "Welcome to my 1231 website",
   "notFound": {
-    "subTitle": "抱歉，您访问的页面不存在。"
-  }
+    "subTitle": "Sorry, the page you are visiting does not exist."
+  },
+  "ch": "Chinese",
+  "en": "English"
 }
