@@ -6,7 +6,9 @@ import ErrorPage from '@/views/errorPage'
 
 import AppLayout from '@/layout/appLayout'
 
-import { HomePage, NotFound } from './routes'
+import { HomePage, NotFound, Login } from './routes'
+
+import { PATHS } from './paths'
 
 function Redirect ({ to }:{to:string}) {
   const navigate = useNavigate()
@@ -29,19 +31,23 @@ const lazyComponent = (
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Redirect to='/app/home'/>,
+    element: <Redirect to={PATHS.home}/>,
     errorElement: <ErrorPage />
   },
   {
-    path: '/app',
     element: <AppLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'home',
+        path: PATHS.home,
         element: lazyComponent(HomePage)
       }
     ]
+  },
+  {
+    path: PATHS.login,
+    element: lazyComponent(Login),
+    errorElement: <ErrorPage />
   },
   {
     path: '*',

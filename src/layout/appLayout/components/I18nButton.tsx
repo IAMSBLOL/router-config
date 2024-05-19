@@ -3,11 +3,19 @@ import { Button, Dropdown } from 'antd'
 import Language from './icons/language.svg?react'
 import type { MenuProps } from 'antd'
 import { useTranslation } from 'react-i18next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const I18nButton = () => {
   const { t, i18n } = useTranslation()
   const [text, setI18nText] = useState('zh')
+
+  useEffect(() => {
+    //
+    const i18nText = localStorage.getItem('i18n')
+    if (i18nText) {
+      setI18nText(i18nText)
+    }
+  }, [])
 
   const items: MenuProps['items'] = [
     {
@@ -20,11 +28,10 @@ const I18nButton = () => {
     }
   ]
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onClick = (data:any) => {
-    console.log(data)
+  const onClick : MenuProps['onClick'] = (data) => {
     i18n.changeLanguage(data.key)
     setI18nText(t(data.key))
+    localStorage.setItem('i18n', t(data.key))
   }
   return (
 

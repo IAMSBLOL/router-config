@@ -1,11 +1,15 @@
 import { Menu } from 'antd'
 import { useMenuList } from '../hooks'
 import { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import type { MenuProps } from 'antd'
 
 const Memu = () => {
   const [collapsed, setCollapsed] = useState(false)
   const divIns = useRef<HTMLDivElement>(null)
   const items = useMenuList()
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const resizeFn = () => {
@@ -25,8 +29,8 @@ const Memu = () => {
     }
   }, [])
 
-  const onClick = (e:unknown) => {
-    console.log('click', e)
+  const onClick:MenuProps['onClick'] = (data) => {
+    navigate(data.key)
   }
 
   return (
@@ -39,6 +43,7 @@ const Memu = () => {
           mode="inline"
           items={items}
           inlineCollapsed={collapsed}
+          selectedKeys={[location.pathname]}
         />
       </div>
     </div>

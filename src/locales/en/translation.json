@@ -1,8 +1,21 @@
 {
-  "welcome": "Welcome to my 1231 website",
+  "welcome": "Welcome to my website",
   "notFound": {
-    "subTitle": "Sorry, the page you are visiting does not exist."
+    "subTitle": "Sorry, the page you are visiting does not exist.",
+    "buttonText": "Go back to the homepage"
+  },
+  "menu": {
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About"
+  },
+  "login": {
+    "登陆": "Login",
+    "用户名": "User Name",
+    "密码": "Password"
   },
   "ch": "Chinese",
-  "en": "English"
+  "en": "English",
+  "退出": "Login Out",
+  "应用名": "Destiny Technology"
 }
