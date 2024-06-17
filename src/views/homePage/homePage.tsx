@@ -1,10 +1,12 @@
 // import { useTranslation } from 'react-i18next'
+import AIAudio from './AIAudio'
 
 const HomePage = () => {
   // const { t } = useTranslation()
   return (
 
     <section>
+      <AIAudio />
       <div className="px-8 py-24 mx-auto md:px-12 lg:px-32 max-w-7xl">
         <div className="text-center">
           <div>

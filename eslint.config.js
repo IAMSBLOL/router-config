@@ -3,11 +3,12 @@ import tseslint from 'typescript-eslint'
 import { FlatCompat } from '@eslint/eslintrc'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-// import reactPlugin from 'eslint-plugin-react'
+import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 // import oxlint from 'eslint-plugin-oxlint'
 import eslintPluginJsonc from 'eslint-plugin-jsonc'
+import globals from 'globals'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -30,10 +31,6 @@ export default [
 
   eslintPluginUnicorn.configs['flat/recommended'],
 
-  // // react 相关，支持度不够
-
-  // // hooks
-  ...compat.plugins('react'),
   {
     plugins: {
       'react-hooks': reactHooks
@@ -41,9 +38,32 @@ export default [
     rules: reactHooks.configs.recommended.rules
   },
 
-  // 兼容 oxlint 必须最后一位
-  // oxlint.configs['flat/recommended'],
-  // 但需要文件名校验 oxlint 会关闭此项
+  {
+    files: ['src/**/*.{tsx,ts,js,jsx}'],
+    rules: {
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type'
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true
+          },
+          warnOnUnassignedImports: true
+        }
+      ]
+    }
+  },
 
   {
     files: ['src/**/*.{tsx,ts,js,jsx}'],
@@ -51,10 +71,7 @@ export default [
       indent: ['error', 2],
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'react/jsx-max-props-per-line': ['error', {
-        maximum: 1, // 可以根据需要调整这个值
-        when: 'always' // 或者 "multiline"
-      }],
+
       'unicorn/no-null': 'off',
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/consistent-function-scoping': 'off',
@@ -68,6 +85,49 @@ export default [
         }
       ]
     }
+  },
+  {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    plugins: {
+      react
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      },
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      'react/jsx-one-expression-per-line': 0,
+      'react/jsx-max-props-per-line': ['error', {
+        maximum: 1, // 可以根据需要调整这个值
+        when: 'multiline' // 或者 "multiline"
+      }],
+      'react/jsx-closing-bracket-location': ['error', {
+        nonEmpty: 'tag-aligned',
+        selfClosing: 'tag-aligned'
+      }],
+      // bug
+      'react/jsx-first-prop-new-line': [
+        0, 'always'
+      ],
+      'react/jsx-wrap-multilines': [1, {
+        declaration: 'parens-new-line',
+        assignment: 'parens',
+        return: 'parens',
+        arrow: 'parens',
+        condition: 'ignore',
+        logical: 'ignore',
+        prop: 'ignore'
+      }],
+      'react/jsx-indent': [2, 2],
+      'react/jsx-indent-props': [2, 2]
+    }
+
   },
   ...eslintPluginJsonc.configs['flat/recommended-with-jsonc']
 

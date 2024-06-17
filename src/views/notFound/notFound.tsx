@@ -1,27 +1,43 @@
 import { Button, Result } from 'antd'
-import React from 'react'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
-const NoFoundPage: React.FC = () => {
+const test = (
+  <div>
+    <span>
+      1
+    </span>
+  </div>
+)
+
+console.log(test)
+
+const NoFoundPage = () => {
   const { t } = useTranslation()
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    console.log(t)
+  }, [t])
+
   return (
     <div className='pt-14'>
-      <Result
-        status="404"
-        title="404"
-        subTitle={t('notFound.subTitle')}
+      <Result status="404"
+        subTitle={
+          t('notFound.subTitle')
+        }
+        title={test}
+
         extra={
           <Button
             type="primary"
-            onClick={() => navigate('/')}>
+            onClick={() => navigate('/')}
+          >
             {t('notFound.buttonText')}
           </Button>
         }
-
       />
     </div>
   )
