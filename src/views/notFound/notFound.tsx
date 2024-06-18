@@ -10,7 +10,6 @@ const test = (
     </span>
   </div>
 )
-
 console.log(test)
 
 const NoFoundPage = () => {
@@ -23,8 +22,11 @@ const NoFoundPage = () => {
   }, [t])
 
   return (
-    <div className='pt-14'>
-      <Result status="404"
+    <div
+      className='pt-14'
+    >
+      <Result
+        status="404"
         subTitle={
           t('notFound.subTitle')
         }

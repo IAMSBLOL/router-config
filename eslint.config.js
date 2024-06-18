@@ -113,7 +113,7 @@ export default [
       }],
       // bug
       'react/jsx-first-prop-new-line': [
-        0, 'always'
+        1, 'always'
       ],
       'react/jsx-wrap-multilines': [1, {
         declaration: 'parens-new-line',
